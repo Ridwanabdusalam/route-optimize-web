@@ -1,4 +1,3 @@
-
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -132,14 +131,18 @@ const Blog = () => {
                       <span>{blogPosts[0].author}</span>
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {blogPosts[0].title}
-                  </h3>
+                  <Link to={`/blog/${blogPosts[0].slug}`}>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4 hover:text-blue-600 transition-colors">
+                      {blogPosts[0].title}
+                    </h3>
+                  </Link>
                   <p className="text-gray-600 mb-6">
                     {blogPosts[0].excerpt}
                   </p>
-                  <Button className="w-fit">
-                    Read More <ArrowRight className="w-4 h-4 ml-2" />
+                  <Button asChild className="w-fit">
+                    <Link to={`/blog/${blogPosts[0].slug}`}>
+                      Read More <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -178,16 +181,20 @@ const Blog = () => {
                       <span>{post.author}</span>
                     </div>
                   </div>
-                  <CardTitle className="text-xl hover:text-blue-600 transition-colors cursor-pointer">
-                    {post.title}
-                  </CardTitle>
+                  <Link to={post.slug.startsWith('/blog/') ? post.slug : `/blog/${post.slug}`}>
+                    <CardTitle className="text-xl hover:text-blue-600 transition-colors cursor-pointer">
+                      {post.title}
+                    </CardTitle>
+                  </Link>
                   <CardDescription>
                     {post.excerpt}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" className="w-full">
-                    Read More <ArrowRight className="w-4 h-4 ml-2" />
+                  <Button variant="outline" className="w-full" asChild>
+                    <Link to={post.slug.startsWith('/blog/') ? post.slug : `/blog/${post.slug}`}>
+                      Read More <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>

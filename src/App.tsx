@@ -10,6 +10,9 @@ import Services from "./pages/Services";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import FutureSupplyChainAI from "./pages/blog/FutureSupplyChainAI";
+import SustainableLogistics from "./pages/blog/SustainableLogistics";
+import EcommerceFulfillment from "./pages/blog/EcommerceFulfillment";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +27,9 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/future-supply-chain-ai-automation" element={<FutureSupplyChainAI />} />
+          <Route path="/blog/sustainable-logistics-green-transportation" element={<SustainableLogistics />} />
+          <Route path="/blog/ecommerce-fulfillment-customer-expectations" element={<EcommerceFulfillment />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
